@@ -1,5 +1,0 @@
-Options +ExecCGI
-#<Files "k5">
-#        SetHandler cgi-script
-#</Files>
-#ErrorDocument 500 /ktest/500.asis
