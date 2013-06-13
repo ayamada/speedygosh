@@ -68,34 +68,34 @@ NOTICE: MAYBE ONLY 1 ARG CAN USE DEPENDING BY OS TYPE
 
 - `-g ...` `--goshpath=...`
   - Change to original `gosh`'s path
-  - Cannot use `~` alias (you must use like `/home/username/`)
-  - Cannot use path that contain a space character
+  - Cannot include `~` alias (you must write `/home/username/`, instead of `~`)
+  - Cannot include a space character
 
 - `-d ...` `--sessiondir=...`
   - Change to dir of sock file and other
   - Default is "/tmp/speedygosh"
-  - Cannot use `~` alias (you must use like `/home/username/`)
-  - Cannot use path that contain a space character
+  - Cannot include `~` alias (you must write `/home/username/`, instead of `~`)
+  - Cannot include a space character
 
 - `-p ...` `--maxprocesses=...`
   - Limit of number of processes per one script
   - Default is 32
-  - Cannot use `0`
+  - Cannot assign `0`
 
 - `-r ...` `--maxruns=...`
   - A backend process was shutdowned by count of executing (for safety from resource leaks)
   - Default is 1024
-  - Cannot use `0`
+  - Cannot assign `0`
 
 - `-t ...` `--timeout=...`
   - A backend process was shutdowned automatically when idle while this secs
   - Default is 90
-  - Cannot use `0`
+  - Cannot assign `0`
 
 - `-e ...` `--errorlog=...`
   - Force to change stderr to this file with `>>` mode
-  - Cannot use `~` alias (you must use like `/home/username/`)
-  - Cannot use path that contain a space character
+  - Cannot include `~` alias (you must write `/home/username/`, instead of `~`)
+  - Cannot include a space character
 
 Constraints
 -----------
