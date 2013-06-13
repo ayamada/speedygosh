@@ -24,8 +24,8 @@ Summary
 - This script were booted more than once, that reuse existing backend process. it omit cost of boot-sequence(quicken to boot).
 - A backend process is shutdowned automatically when idle while 90 sec (by default).
 - It is convenience for CGI-script, and commonly-used CLI-command.
-- This behavior is like to [http://daemoninc.com/SpeedyCGI/](SpeedyCGI), and [https://www.heroku.com/about](Heroku)-process.
-  - speedygosh's behavior is like to SpeedyCGI (because I inspired by SpeedyCGI). To read [http://daemoninc.com/SpeedyCGI/#FREQUENTLY_ASKED_QUESTIONS](SpeedyCGI#FREQUENTLY ASKED QUESTIONS), that may help to understand speedygosh's behavior.
+- This behavior is like to [SpeedyCGI](http://daemoninc.com/SpeedyCGI/), and [Heroku](https://www.heroku.com/about)-process.
+  - speedygosh's behavior is like to SpeedyCGI (because I inspired by SpeedyCGI). To read [SpeedyCGI#FREQUENTLY ASKED QUESTIONS](http://daemoninc.com/SpeedyCGI/#FREQUENTLY_ASKED_QUESTIONS), that may help to understand speedygosh's behavior.
 
 Requirements
 ------------
@@ -88,7 +88,7 @@ Constraints
 
 TODO: later
 
-(sorry, please use [http://translate.google.com/#auto/en/http%3A%2F%2Flegacy.e.tir.jp%2Fwiliki%3Fspeedygosh](translate.google.com))
+(sorry, please use [translate.google.com](http://translate.google.com/#auto/en/http%3A%2F%2Flegacy.e.tir.jp%2Fwiliki%3Fspeedygosh))
 
 
 
