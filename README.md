@@ -13,7 +13,7 @@ For Japanese
 Usage
 -----
 
-Change from `#!/path/to/gosh` to `#!/path/to/speedygosh` in Gauche script file.
+Change from `#!/path/to/gosh` to `#!/path/to/speedygosh` in [Gauche](http://practical-scheme.net/gauche/) script file.
 
 ( But, speedygosh has some constraints. See below. )
 
