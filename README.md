@@ -41,6 +41,18 @@ $ wget http://legacy.tir.jp/speedygosh-0.1.8.tgz
 $ gauche-package install speedygosh-0.1.8.tgz
 ```
 
+or
+
+```sh
+$ git clone git@github.com:ayamada/speedygosh.git # or your fork
+$ cd speedygosh
+$ ./DIST gen
+$ ./configure
+$ make all check install
+```
+
+for development
+
 ChangeLog
 ---------
 
