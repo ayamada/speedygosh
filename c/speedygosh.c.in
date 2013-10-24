@@ -776,6 +776,7 @@ int main_solver(char *session_path_prefix, SGArgs *sgargs,
      * この状況のままでは次回以降の実行もエラーになる。そこで、
      * このsock_pathを消してしまう事で、次回以降の実行は新しい
      * estpサーバを起動し直す事で、ちゃんと動くようにする。
+     * TODO: サーバプロセスのkillも明示的に行った方がよい
      */
     unlink(sock_path);
     rv = SOLVER_ERROR;
