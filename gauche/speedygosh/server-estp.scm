@@ -415,37 +415,42 @@
           ;; 尚、この際にstderrにエラー内容が流されるかも知れない為、
           ;; まだこの段階ではstdin/stdout/stderrの切り離しは行わない。
           (let* ((script-module (load-script-to-module script-file))
-                 (script-main (global-variable-ref script-module 'main #f)))
+                 (script-main (global-variable-ref script-module 'main #f))
+                 )
             (unless script-main
               (error "cannot found proc of main" script-file))
             ;; socketを生成する
             (let1 socket (make-session-socket-or-error session-path-prefix)
-              ;; socketの生成に成功したので、準備段階としてはもう
-              ;; エラーになる事は無い筈なので、stderrも捨てる
-              (with-error-to-port
-                (current-output-port) ; stdoutを流用する
-                (lambda ()
-                  ;; socketを生成し、socket生成が正常に完了した事を示す為に、
-                  ;; 改行を送ってから、親とのパイプを切断して通知する。
-                  ;; ついでにstdinとstderrも閉じておく
-                  ;; (開いたままだと親プロセスの終了に支障がある)
-                  (close-input-port (standard-input-port))
-                  (newline (standard-output-port)) ; 合図として必要
-                  (close-output-port (standard-output-port))
-                  (close-output-port (standard-error-port))
-                  ;; ToDo: standard-input-port等が空のままだと、
-                  ;;       sys-system実行時等での入出力先が問題になる為、
-                  ;;       何らかの手段を用意したいが、そもそも可能なのか？
-                  ;; サーバ待ち受けを開始する
-                  (debugf "server start\n")
-                  (server-start socket
-                                script-module
-                                script-main
-                                session-path-prefix
-                                timeout
-                                maxruns
-                                errorlog
-                                ))))))))))
+              ;; エラー例外によって終了する際には、明示的にsocketを削除する
+              (unwind-protect
+                ;; socketの生成に成功したので、準備段階としてはもう
+                ;; エラーになる事は無い筈なので、stderrも捨てる
+                (with-error-to-port
+                  (current-output-port) ; stdoutを流用する
+                  (lambda ()
+                    ;; socketを生成し、socket生成が正常に完了した事を示す為に、
+                    ;; 改行を送ってから、親とのパイプを切断して通知する。
+                    ;; ついでにstdinとstderrも閉じておく
+                    ;; (開いたままだと親プロセスの終了に支障がある)
+                    (close-input-port (standard-input-port))
+                    (newline (standard-output-port)) ; 合図として必要
+                    (close-output-port (standard-output-port))
+                    (close-output-port (standard-error-port))
+                    ;; ToDo: standard-input-port等が空のままだと、
+                    ;;       sys-system実行時等での入出力先が問題になる為、
+                    ;;       何らかの手段を用意したいが、そもそも可能なのか？
+                    ;; サーバ待ち受けを開始する
+                    (debugf "server start\n")
+                    (server-start socket
+                                  script-module
+                                  script-main
+                                  session-path-prefix
+                                  timeout
+                                  maxruns
+                                  errorlog
+                                  )))
+                (sys-unlink
+                  (string-append session-path-prefix ".sock"))))))))))
 
 
 (provide "speedygosh/server-estp")

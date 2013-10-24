@@ -771,7 +771,13 @@ int main_solver(char *session_path_prefix, SGArgs *sgargs,
   int r = estp02_comm(sock_path,
       sginfo->script_argc, sginfo->script_argv, environ);
   if (r < 0) {
-    /* estp通信、つまり実際に行いたい処理がエラーになった。 */
+    /* estp通信、つまり実際に行いたい処理がエラーになった。
+     * この場合、このsock_pathが腐ってしまっていると考えられる為、
+     * この状況のままでは次回以降の実行もエラーになる。そこで、
+     * このsock_pathを消してしまう事で、次回以降の実行は新しい
+     * estpサーバを起動し直す事で、ちゃんと動くようにする。
+     */
+    unlink(sock_path);
     rv = SOLVER_ERROR;
   }
   else {
