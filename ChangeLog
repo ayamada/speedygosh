@@ -1,5 +1,18 @@
 2013-06-05  ayamada
 
+	* speedygosh : 0.1.9 release
+
+	* speedygosh : gauche/speedygosh/server-estp.scm c/speedygosh.c.in
+	  - *.sockファイル回りでのエラー時の扱いを強化。
+	  - エラーが発生したら、その*.sockファイルはunlinkする事で、
+	    次回以降の実行時にエラーになり続けるのを防ぐ
+	  - estpサーバ側がエラー終了する際に、どのタイミングで
+	    エラーが投げられても大丈夫なように、unwind-protectで
+	    *.sockファイルをunlinkするようにした
+
+
+2013-06-05  ayamada
+
 	* speedygosh : 0.1.8 release
 
 	* speedygosh : c/estp02.c c/estp02.h

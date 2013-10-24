@@ -37,8 +37,8 @@ Install
 -------
 
 ```sh
-$ wget http://legacy.tir.jp/speedygosh-0.1.8.tgz
-$ gauche-package install speedygosh-0.1.8.tgz
+$ wget http://legacy.tir.jp/speedygosh-0.1.9.tgz
+$ gauche-package install speedygosh-0.1.9.tgz
 ```
 
 or
